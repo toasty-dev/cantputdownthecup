@@ -254,31 +254,28 @@ function rconsolename(Input)
 end
 
 local function rconsoleprint(Input)
-    for i, v in pairs(colors) do
-        if string.find(Input, i) then
-            currentColor = v
-            Input = string.gsub(Input, i, "")
-        end
+    if colors[Input] then
+        CurrentColor = colors[Input]
+    else
+        local Text = Instance.new("TextLabel")
+        Text.Parent = Frame_8
+        Text.BackgroundTransparency = 1
+        Text.TextTransparency = 1
+        Text.TextColor3 = CurrentColor
+        Text.Font = Enum.Font.Code
+        Text.TextSize = 14
+        Text.TextXAlignment = Enum.TextXAlignment.Left
+        Text.TextYAlignment = Enum.TextYAlignment.Top
+        Text.Size = UDim2.new(1, 0, 0, 20)
+        Text.Text = Input
+        Text.Position = UDim2.new(0, 0, 0, Frame_8.CanvasSize.Y.Offset)
+
+        Frame_8.CanvasSize = UDim2.new(0, 0, 0, Frame_8.CanvasSize.Y.Offset + 20)
+
+        local Fade = TweenInfo.new(0.07, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+        local FadeIn = TweenService:Create(Text, Fade, {TextTransparency = 0})
+        FadeIn:Play()
     end
-
-    local Text = Instance.new("TextLabel")
-    Text.Parent = Frame_8
-    Text.BackgroundTransparency = 1
-    Text.TextTransparency = 1
-    Text.TextColor3 = CurrentColor
-    Text.Font = Enum.Font.Code
-    Text.TextSize = 14
-    Text.TextXAlignment = Enum.TextXAlignment.Left
-    Text.TextYAlignment = Enum.TextYAlignment.Top
-    Text.Size = UDim2.new(1, 0, 0, 20)
-    Text.Text = Input
-    Text.Position = UDim2.new(0, 0, 0, Frame_8.CanvasSize.Y.Offset)
-
-    Frame_8.CanvasSize = UDim2.new(0, 0, 0, Frame_8.CanvasSize.Y.Offset + 20)
-
-    local Fade = TweenInfo.new(0.07, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
-    local FadeIn = TweenService:Create(Text, Fade, {TextTransparency = 0})
-    FadeIn:Play()
 end
 
 local function rconsoleinfo(Input)
