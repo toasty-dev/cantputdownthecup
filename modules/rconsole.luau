@@ -52,11 +52,11 @@ local HttpService = SecureService:GetService("HttpService")
 local CollectionService = SecureService:GetService("CollectionService")
 
 local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Parent = game:GetService("CoreGui")
-local dragging
-local dragInput
-local dragStart
-local startPos
+ScreenGui.Parent = CoreGui
+local Dragging
+local DragInput
+local DragStart
+local StartPos
 local Frame = Instance.new("Frame")
 local Frame_2 = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -219,18 +219,18 @@ end
 
 -- I stole this from paws :fire:
 function update(input)
-    local delta = input.Position - dragStart
-    Frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    local delta = input.Position - DragStart
+    Frame.Position = UDim2.new(StartPos.X.Scale, StartPos.X.Offset + delta.X, StartPos.Y.Scale, StartPos.Y.Offset + delta.Y)
 end
 
 Frame.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = true
-        dragStart = input.Position
-        startPos = Frame.Position
+        Dragging = true
+        DragStart = input.Position
+        StartPos = Frame.Position
                             input.Changed:Connect(function()
             if input.UserInputState == Enum.UserInputState.End then
-                dragging = false
+                Dragging = false
             end
         end)
     end
@@ -238,12 +238,12 @@ end)
 
 Frame.InputChanged:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseMovement then
-        dragInput = input
+        DragInput = input
     end
 end)
 
 UserInputService.InputChanged:Connect(function(input)
-    if input == dragInput and dragging then
+    if input == DragInput and Dragging then
         update(input)
     end
 end)
@@ -253,7 +253,7 @@ function rconsolename(Input)
     TextLabel.Text = Input
 end
 
-local function rconsoleprint(Input)
+function rconsoleprint(Input)
     if colors[Input] then
         CurrentColor = colors[Input]
     else
@@ -278,7 +278,7 @@ local function rconsoleprint(Input)
     end
 end
 
-local function rconsoleinfo(Input)
+function rconsoleinfo(Input)
     local Info = "[INFO] " .. Input
     local OldColor = CurrentColor
     CurrentColor = colors["@@BLUE@@"]
@@ -286,7 +286,7 @@ local function rconsoleinfo(Input)
     CurrentColor = OldColor
 end
 
-local function rconsolewarning(Input)
+function rconsolewarning(Input)
     local Info = "[WARNING] " .. Input
     local OldColor = CurrentColor
     CurrentColor = colors["@@YELLOW@@"]
@@ -294,7 +294,7 @@ local function rconsolewarning(Input)
     CurrentColor = OldColor
 end
 
-local function rconsoleerr(Input)
+function rconsoleerr(Input)
     local Info = "[ERROR] " .. Input
     local OldColor = CurrentColor
     CurrentColor = colors["@@RED@@"]
@@ -302,8 +302,8 @@ local function rconsoleerr(Input)
     CurrentColor = OldColor
 end
 
-local function rconsoleclear()
-    for i, v in pairs(Frame_8:GetChildren()) do
+function rconsoleclear()
+    for i, v in ipairs(Frame_8:GetChildren()) do
         if v:IsA("TextLabel") then
             v:Destroy()
         end
