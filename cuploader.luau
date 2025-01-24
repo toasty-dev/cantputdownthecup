@@ -1,4 +1,5 @@
---temp loader
+--temploader
+
 local cupascii = [[
 	       ==---=+
     ---------==========-
@@ -39,9 +40,7 @@ function GetMatchState()
     return ClientStore:getState().Game.matchState
 end
 
-local access = pcall(rconsolecreate)
-
-if access then
+if typeof(rconsolecreate) then
 	rconsolecreate()
 	rconsolename("Cup || V1 || Loader")
 	rconsoleprint("@@MAGENTA@@")
