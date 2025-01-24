@@ -162,7 +162,7 @@ function rconsolecreate()
     Frame_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
     Frame_4.BorderSizePixel = 0
     Frame_4.Position = UDim2.new(1, 0, 0.057086613, 0)
-    Frame_4.Size = UDim2.new(0.0173469391, 0, 0.941999972, 0)
+    Frame_4.Size = UDim2.new(0.0173469391, 0, 1, 0)
     Frame_5.Parent = Frame_4
     Frame_5.BackgroundColor3 = Color3.fromRGB(158, 158, 158)
     Frame_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
