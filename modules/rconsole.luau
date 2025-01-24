@@ -120,7 +120,7 @@ function rconsolecreate()
     Frame_2.BackgroundColor3 = Color3.fromRGB(58, 55, 55)
     Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
     Frame_2.BorderSizePixel = 0
-    Frame_2.Size = UDim2.new(0.99999994, 0, 0.057086613, 0)
+    Frame_2.Size = UDim2.new(1, 0, 0.057086613, 0)
     UICorner.Parent = Frame_2
     Frame_3.Parent = Frame_2
     Frame_3.AnchorPoint = Vector2.new(0, 1)
@@ -205,7 +205,7 @@ function rconsolecreate()
     Frame_8.Size = UDim2.new(1, 0, 1, 0)
     Frame_8.ScrollBarThickness = 0
     UIPadding.Parent = Frame_8
-    UIPadding.PaddingBottom = UDim.new(0, 4)
+    UIPadding.PaddingBottom = UDim.new(0, 0)
     UIPadding.PaddingLeft = UDim.new(0, 8)
     UIPadding.PaddingRight = UDim.new(0, 8)
     UIPadding.PaddingTop = UDim.new(0, 4)
