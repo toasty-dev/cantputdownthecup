@@ -23,6 +23,8 @@
            +===-=
 ]]
 
+local LoadCustomAssetModule = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/toasty-dev/cantputdownthecup/refs/heads/main/modules/loadasset.luau", true))()
+
 local SecureService = {
     GetService = function(self, ServiceName)
         return cloneref(game:GetService(ServiceName))
@@ -137,7 +139,7 @@ function rconsolecreate()
     ImageLabel.BorderSizePixel = 0
     ImageLabel.Position = UDim2.new(0, 9, 0.5, 0)
     ImageLabel.Size = UDim2.new(0, 16, 0, 16)
-    ImageLabel.Image = "rbxassetid://95529367537345"
+    ImageLabel.Image = LoadCustomAsset("https://raw.githubusercontent.com/toasty-dev/cantputdownthecup/refs/heads/main/Assets/hawktu.png")
     TextLabel.Parent = Frame_2
     TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     TextLabel.BackgroundTransparency = 1.000
